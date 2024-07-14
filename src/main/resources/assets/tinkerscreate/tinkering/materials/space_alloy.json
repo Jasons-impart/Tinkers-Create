@@ -1,0 +1,63 @@
+{
+  "color": "FF8C82AA",
+  "fallbacks": [
+    "metal"
+  ],
+  "generator": {
+    "ignoreMaterialStats": false,
+    "supportedStats": [
+      "tconstruct:head",
+      "tconstruct:handle",
+      "tconstruct:binding",
+      "tconstruct:repair_kit",
+      "tconstruct:limb",
+      "tconstruct:grip",
+      "tconstruct:bowstring",
+      "tconstruct:armor_plating",
+      "tconstruct:plating_boots",
+      "tconstruct:plating_leggings",
+      "tconstruct:plating_chestplate",
+      "tconstruct:plating_helmet",
+      "tconstruct:plating_shield",
+      "tconstruct:maille",
+      "tconstruct:armor_maille"
+    ],
+    "transformer": {
+      "type": "tconstruct:grey_to_sprite",
+      "palette": [
+        {
+          "grey": 0,
+          "color": "FF000000"
+        },
+        {
+          "grey": 63,
+          "color": "FFC8C8C8",
+          "path": "tinkerscreate:item/materials/space_alloy/space_alloy_border"
+        },
+        {
+          "grey": 102,
+          "path": "tinkerscreate:item/materials/space_alloy/space_alloy_border"
+        },
+        {
+          "grey": 140,
+          "color": "FFE1E1E1",
+          "path": "tinkerscreate:item/materials/space_alloy/space_alloy"
+        },
+        {
+          "grey": 178,
+          "path": "tinkerscreate:item/materials/space_alloy/space_alloy"
+        },
+        {
+          "grey": 216,
+          "color": "FFE1E1E1",
+          "path": "tinkerscreate:item/materials/space_alloy/space_alloy_highlight"
+        },
+        {
+          "grey": 255,
+          "path": "tinkerscreate:item/materials/space_alloy/space_alloy_highlight"
+        }
+      ]
+    }
+  },
+  "luminosity": 1
+}

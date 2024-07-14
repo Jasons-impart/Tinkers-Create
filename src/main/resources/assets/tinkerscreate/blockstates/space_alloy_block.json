@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "tinkercreate:block/space_alloy_block"
+    }
+  }
+}
