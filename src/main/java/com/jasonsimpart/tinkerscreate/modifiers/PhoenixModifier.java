@@ -48,19 +48,16 @@ public class PhoenixModifier extends NoLevelsModifier implements LivingDeathModi
         entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 400));
         return true;
     }
-    // 声明TOOLTYPE是ARMOR
-    public ToolType[] TYPES = new ToolType[]{ToolType.ARMOR};
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> tooltip, TooltipKey key, TooltipFlag tooltipFlag) {
         // 传参
-        ToolType type = ToolType.from(tool.getItem(), TYPES);
+        ToolType type = ToolType.from(tool.getItem(), ToolType.ARMOR);
         // 判断是否存在对应type
         if (type != null) {
-            int level = modifier.getLevel();
             // 计算Phoenix能够生效的次数(向下取整)
-            double bonus =  Math.floor((double) tool.getCurrentDurability() /1000);
+            int bonus = tool.getCurrentDurability() / 1000;
             // 判断是否bonus大于等于1，若存在则显示
-            if (bonus >= 1.0F) {
+            if (bonus >= 1) {
                 // 添加到hook里
                 TooltipModifierHook.addFlatBoost(this, TooltipModifierHook.statName(this, ToolStats.ARMOR), bonus, tooltip);
             }

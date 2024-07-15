@@ -2,6 +2,8 @@ package com.jasonsimpart.tinkerscreate.events;
 
 import com.jasonsimpart.tinkerscreate.TinkersCreate;
 import com.jasonsimpart.tinkerscreate.hooks.TinkersCreateModifierHooks;
+import net.minecraft.commands.Commands;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -14,6 +16,8 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 public class ServerEvents {
     @SubscribeEvent
     public static void onLivingDeath(LivingDeathEvent event) {
+        if (event.getSource() == DamageSource.OUT_OF_WORLD)
+            return;
         var entity = event.getEntity();
         boolean cancelled = false;
         EquipmentContext context = new EquipmentContext(entity);
