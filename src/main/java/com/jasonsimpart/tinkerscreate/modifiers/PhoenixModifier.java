@@ -3,6 +3,8 @@ package com.jasonsimpart.tinkerscreate.modifiers;
 import com.jasonsimpart.tinkerscreate.hooks.LivingDeathModifierHook;
 import com.jasonsimpart.tinkerscreate.hooks.TinkersCreateModifierHooks;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
@@ -42,7 +44,7 @@ public class PhoenixModifier extends NoLevelsModifier implements LivingDeathModi
         if (tool.getCurrentDurability() < 1000)
             return false;
         tool.setDamage(tool.getDamage() + 1000);
-        entity.playSound();
+        entity.playSound(SoundEvents.TOTEM_USE);
         entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 400, 1));
         entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
         entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 400));
