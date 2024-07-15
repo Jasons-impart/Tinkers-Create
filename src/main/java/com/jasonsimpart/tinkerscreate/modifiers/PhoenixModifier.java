@@ -2,14 +2,22 @@ package com.jasonsimpart.tinkerscreate.modifiers;
 
 import com.jasonsimpart.tinkerscreate.hooks.LivingDeathModifierHook;
 import com.jasonsimpart.tinkerscreate.hooks.TinkersCreateModifierHooks;
+import com.jasonsimpart.tinkerscreate.network.PhoenixPacket;
+import com.jasonsimpart.tinkerscreate.network.TinkersCreatePacketHandler;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.protocol.game.ClientboundEntityEventPacket;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraftforge.network.PacketDistributor;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
@@ -44,10 +52,10 @@ public class PhoenixModifier extends NoLevelsModifier implements LivingDeathModi
         if (tool.getCurrentDurability() < 1000)
             return false;
         tool.setDamage(tool.getDamage() + 1000);
-        entity.playSound(SoundEvents.TOTEM_USE);
         entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 400, 1));
         entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
         entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 400));
+        TinkersCreatePacketHandler.INSTANCE.send(PacketDistributor.ALL.noArg(), new PhoenixPacket(entity));
         return true;
     }
     @Override

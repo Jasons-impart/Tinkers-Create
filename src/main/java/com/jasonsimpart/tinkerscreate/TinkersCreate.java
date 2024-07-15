@@ -1,5 +1,6 @@
 package com.jasonsimpart.tinkerscreate;
 
+import com.jasonsimpart.tinkerscreate.network.TinkersCreatePacketHandler;
 import com.jasonsimpart.tinkerscreate.register.TinkersCreateBlocks;
 import com.jasonsimpart.tinkerscreate.register.TinkersCreateItems;
 import com.jasonsimpart.tinkerscreate.register.TinkersCreateMaterials;
@@ -27,6 +28,8 @@ public class TinkersCreate {
         TinkersCreateItems.ITEMS.register(bus);
         TinkersCreateBlocks.BLOCKS.register(bus);
         TinkersCreateModifiers.MODIFIERS.register(bus);
+
+        TinkersCreatePacketHandler.init();
     }
 
     @SubscribeEvent
