@@ -1,13 +1,12 @@
 package com.jasonsimpart.tinkerscreate.modifiers;
 
+import com.jasonsimpart.tinkerscreate.Utils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.TooltipFlag;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
-import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
@@ -19,8 +18,10 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.stats.ToolType;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
+@ParametersAreNonnullByDefault
 public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageModifierHook, TooltipModifierHook {
 
     @Override
@@ -37,7 +38,6 @@ public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageMo
 
     @Override
     public float getMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext Context, float baseDamage, float damage) {
-        // 获取baseDamage
         // 获取modifier等级
         float level = modifier.getEffectiveLevel();
         // 获取被攻击生物max_health
@@ -57,13 +57,12 @@ public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageMo
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> tooltip, TooltipKey key, TooltipFlag tooltipFlag) {
         ToolType type = ToolType.from(tool.getItem(), TYPES);
-        if (type != null) {
-            int level = modifier.getLevel();
-            float bonus = (float) (0 * 0.5F);// 未实现传参！！！
+        if (type != null && player != null) {
+            double bonus = 0.5 * Utils.getBaseDamage(player, tool);// 未实现传参！！！
             // 判断是否存在bonus，若存在则显示
-            if (bonus > 0.0F) {
+            if (bonus > 0.0) {
                 // 添加到hook里
-                TooltipModifierHook.addFlatBoost(this, TooltipModifierHook.statName(this, ToolStats.ATTACK_DAMAGE), (double)bonus, tooltip);
+                TooltipModifierHook.addFlatBoost(this, TooltipModifierHook.statName(this, ToolStats.ATTACK_DAMAGE), bonus, tooltip);
             }
         }
     }
