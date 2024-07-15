@@ -1,12 +1,7 @@
 {
   "default": [
     {
-      "name": "tinkerscreate:solid",
-      "level": 1
-    },
-    {
-      "name": "tconstruct:experienced",
-      "level": 2
+      "name": "tinkerscreate:cold_blood"
     }
   ]
 }
