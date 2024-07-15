@@ -1,6 +1,7 @@
 package com.jasonsimpart.tinkerscreate;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.Attributes;
@@ -23,5 +24,9 @@ public class Utils {
             }
             return damage + ((Number)tool.getStats().get(ToolStats.ATTACK_DAMAGE)).floatValue();
         }
+    }
+
+    public static ResourceLocation getResource(String name) {
+        return new ResourceLocation(TinkersCreate.MODID, name);
     }
 }

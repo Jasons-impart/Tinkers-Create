@@ -3,5 +3,13 @@
     {
       "name": "tinkerscreate:cold_blood"
     }
-  ]
+  ],
+  "perStat": {
+    "tconstruct:armor": [
+      {
+        "name": "tinkerscreate:phoenix",
+        "level": 1
+      }
+    ]
+  }
 }
