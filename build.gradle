@@ -141,6 +141,7 @@ dependencies {
     implementation fg.deobf("curse.maven:mmmmmmmmmmmm-225738:4410143")
 
     implementation fg.deobf("curse.maven:create-328085:4835190")
+    implementation fg.deobf("curse.maven:create-enchantment-industry-688768:5342348")
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
