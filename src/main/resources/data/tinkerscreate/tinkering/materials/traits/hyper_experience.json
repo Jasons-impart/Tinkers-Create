@@ -1,0 +1,32 @@
+{
+  "default": [
+    {
+      "name": "tinkerscreate:fragile",
+      "level": 1
+    },
+    {
+      "name": "tconstruct:shiny"
+    }
+  ],
+  "perStat": {
+    "tconstruct:melee_harvest": [
+      {
+        "name": "tinkerscreate:experience_killer",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:shiny"
+      }
+    ],
+    "tconstruct:ranged": [
+      {
+        "name": "tinkerscreate:experience_killer",
+        "level": 1
+      },
+      {
+        "name": "tconstruct:shiny"
+      }
+    ]
+
+  }
+}

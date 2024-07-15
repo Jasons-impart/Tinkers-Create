@@ -1,8 +1,55 @@
 {
-  "itemGroup.TinkersCreateItemGroup": "匠魂：动力 物品",
-  "itemGroup.TinkersCreateToolGroup": "匠魂：动力 工具",
+  "_comment": "itemGroup",
+
+  "itemGroup.TinkersCreateItemGroup": "匠魂动力:物品",
+  "itemGroup.TinkersCreateToolGroup": "匠魂动力:工具",
+
+  "_comment": "item",
+
   "item.tinkerscreate.space_alloy_nugget": "太空合金粒",
+
   "item.tinkerscreate.space_alloy_ingot": "太空合金锭",
+  "item.tinkerscreate.hyper_experience_ingot": "超越经验锭",
+
   "item.tinkerscreate.space_alloy_block": "太空合金块",
+
+  "_comment": "eitem",
+
+  "material.tinkerscreate.space_alloy": "太空合金",
+  "material.tinkerscreate.space_alloy.flavor": "来自群星的力量，随意一击可斩断星辰！",
+  "material.tinkerscreate.space_alloy.encyclopedia": "",
+  "material.tinkerscreate.space_alloy.ranged": "",
+
+  "material.tinkerscreate.hyper_experience": "超越经验锭",
+  "material.tinkerscreate.hyper_experience.flavor": "听说阅历丰富工匠使用该材料更锋利",
+  "material.tinkerscreate.hyper_experience.encyclopedia": "玩家等级每增加一级伤害增加0.3，上限为 强化等级*20+100",
+  "material.tinkerscreate.hyper_experience.ranged": "",
+
+  "_comment": "modifier",
+
+  "modifier.tinkerscreate.fragile": "易碎",
+  "modifier.tinkerscreate.fragile.flavor": "§9轻拿轻放！",
+  "modifier.tinkerscreate.fragile.description": "使用该材料制作将会降低耐久值",
+  "modifier.tinkerscreate.solid": "安山",
+  "modifier.tinkerscreate.solid.flavor": "§8坚如磐石，安若泰山",
+  "modifier.tinkerscreate.solid.description": "使用该材料制作将会增加耐久值",
+  "modifier.tinkerscreate.cold_blood": "冷血",
+  "modifier.tinkerscreate.cold_blood.flavor": "§4不是你记忆中的冷血，但致命的程度，没两样！",
+  "modifier.tinkerscreate.cold_blood.description": "被攻击生物满血时，额外提供武器面板的伤害加成",
+  "modifier.tinkerscreate.cold_blood.attack_damage": "冷血伤害加成",
+
+  "modifier.tinkerscreate.phoenix": "涅槃",
+  "modifier.tinkerscreate.phoenix.flavor": "§6浴火重生！",
+  "modifier.tinkerscreate.phoenix.description": "消耗耐久使玩家涅槃重生！",
+  "modifier.tinkerscreate.phoenix.armor": "可涅槃次数",
+  "modifier.tinkerscreate.experience_killer": "经验杀手",
+  "modifier.tinkerscreate.experience_killer.flavor": "§a积累阅历，然后，一飞冲天！",
+  "modifier.tinkerscreate.experience_killer.description": "玩家等级越高，伤害越高！",
+  "modifier.tinkerscreate.experience_killer.attack_damage": "经验等级伤害加成",
+
+
+  "_comment": "block",
+
   "block.tinkerscreate.space_alloy_block": "太空合金块"
+
 }

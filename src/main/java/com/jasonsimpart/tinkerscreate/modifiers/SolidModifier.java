@@ -27,6 +27,6 @@ public class SolidModifier extends Modifier implements ToolStatsModifierHook {
     @Override
     public void addToolStats(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierStatsBuilder modifierStatsBuilder) {
         float level = modifierEntry.getEffectiveLevel();
-        ToolStats.DURABILITY.multiply(modifierStatsBuilder, 1 + 0.1 * level);
+        ToolStats.DURABILITY.multiply(modifierStatsBuilder, 1 + 0.15 * level);
     }
 }

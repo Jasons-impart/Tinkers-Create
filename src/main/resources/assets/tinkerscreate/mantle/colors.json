@@ -1,0 +1,22 @@
+{
+  "modifier.tinkerscreate": {
+
+    "fragile":              "#63B8FF",
+    "solid":                "#7A8B8B",
+    "experience_killer":    "#76EEC6",
+    "cold_blood":           "#FF0000",
+    "phoenix":              "#FFD700"
+
+  },
+
+  "material.tinkerscreate": {
+
+    "space_alloy":          "#8470FF",
+    "hyper_experience":     "#76EEC6"
+
+  },
+
+  "harvest_tier.minecraft": {
+
+  }
+}

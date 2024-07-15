@@ -52,7 +52,7 @@ public class ExperienceKillerModifier extends Modifier implements MeleeDamageMod
         ToolType type = ToolType.from(tool.getItem(), TYPES);
         if (type != null) {
             int level = modifier.getLevel();
-            float bonus = (float) (level + player.experienceLevel * 0.3F);
+            float bonus = Math.min(level + player.experienceLevel * 0.3F, 100 + 20 * level);
             // 判断是否存在bonus，若存在则显示
             if (bonus > 0.0F) {
                 // 添加到hook里
