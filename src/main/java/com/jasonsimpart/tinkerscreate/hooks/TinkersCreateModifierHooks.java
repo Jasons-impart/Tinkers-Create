@@ -10,4 +10,6 @@ public class TinkersCreateModifierHooks {
 
     public static final ModuleHook<LivingDeathModifierHook> LIVING_DEATH =
             LOADER.register(new ModuleHook<>(Utils.getResource("living_death"), LivingDeathModifierHook.class, LivingDeathModifierHook.AllMerger::new, (tool, modifier, entity, cancelled) -> false));
+    public static final ModuleHook<TargetDeathModifierHook> TARGET_DEATH =
+            LOADER.register(new ModuleHook<>(Utils.getResource("target_death"), TargetDeathModifierHook.class, TargetDeathModifierHook.AllMerger::new, (tool, modifier, attackContext, amount) -> {}));
 }

@@ -14,4 +14,5 @@ public class TinkersCreateModifiers {
     public static StaticModifier<ExperienceKillerModifier> experiencekiller = MODIFIERS.register("experience_killer", ExperienceKillerModifier::new);
     public static StaticModifier<ColdBloodModifier> coldblood = MODIFIERS.register("cold_blood", ColdBloodModifier::new);
     public static StaticModifier<PhoenixModifier> phoenix = MODIFIERS.register("phoenix", PhoenixModifier::new);
+    public static StaticModifier<BloodRepairModifier> bloodrepair = MODIFIERS.register("blood_repair", BloodRepairModifier::new);
 }
