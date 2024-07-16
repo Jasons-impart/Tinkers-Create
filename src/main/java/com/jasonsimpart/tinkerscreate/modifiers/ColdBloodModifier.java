@@ -1,25 +1,40 @@
 package com.jasonsimpart.tinkerscreate.modifiers;
 
 import com.jasonsimpart.tinkerscreate.Utils;
+import net.minecraft.client.renderer.EffectInstance;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileHitModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileLaunchModifierHook;
 import slimeknights.tconstruct.library.modifiers.impl.NoLevelsModifier;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
+import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.stats.ToolType;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import javax.tools.Tool;
 import java.util.List;
+
+import static slimeknights.tconstruct.tools.modifiers.traits.melee.InsatiableModifier.applyEffect;
 
 @ParametersAreNonnullByDefault
 public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageModifierHook, TooltipModifierHook {
@@ -52,7 +67,7 @@ public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageMo
     }
 
     // 添加TOOLTIP
-    public ToolType[] TYPES = new ToolType[]{ToolType.MELEE, ToolType.RANGED};
+    public ToolType[] TYPES = new ToolType[]{ToolType.MELEE};
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> tooltip, TooltipKey key, TooltipFlag tooltipFlag) {
         ToolType type = ToolType.from(tool.getItem(), TYPES);
@@ -65,4 +80,5 @@ public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageMo
             }
         }
     }
+
 }

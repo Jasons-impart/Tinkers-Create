@@ -36,7 +36,9 @@
   "modifier.tinkerscreate.cold_blood": "冷血",
   "modifier.tinkerscreate.cold_blood.flavor": "§4不是你记忆中的冷血，但致命的程度，没两样！",
   "modifier.tinkerscreate.cold_blood.description": "被攻击生物满血时，额外提供武器面板的伤害加成",
-  "modifier.tinkerscreate.cold_blood.attack_damage": "冷血伤害加成",
+  "modifier.tinkerscreate.cold_blood.attack_damage": "冷血近战伤害",
+  "modifier.tinkerscreate.cold_blood.projectile_damage": "冷血远程伤害",
+
 
   "modifier.tinkerscreate.phoenix": "涅槃",
   "modifier.tinkerscreate.phoenix.flavor": "§6浴火重生！",

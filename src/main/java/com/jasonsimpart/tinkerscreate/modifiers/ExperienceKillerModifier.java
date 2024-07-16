@@ -2,8 +2,13 @@ package com.jasonsimpart.tinkerscreate.modifiers;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -11,22 +16,26 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileHitModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileLaunchModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
+import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.stats.ToolType;
 
 import java.util.List;
 
 
-public class ExperienceKillerModifier extends Modifier implements MeleeDamageModifierHook, TooltipModifierHook {
+public class ExperienceKillerModifier extends Modifier implements MeleeDamageModifierHook, TooltipModifierHook, ProjectileLaunchModifierHook, ProjectileHitModifierHook {
 
     // 注册HOOK
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
-        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP, ModifierHooks.PROJECTILE_LAUNCH, ModifierHooks.PROJECTILE_HIT);
     }
     @Override
     // 设定priority以确定作用顺序
@@ -44,6 +53,20 @@ public class ExperienceKillerModifier extends Modifier implements MeleeDamageMod
         return damage + Math.min((level + attacker.experienceLevel * 0.3F), (100 + 20 * level));// level + 0.3倍经验加成,设定最大值为20*level+100
     }
 
+
+    @Override
+    public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, Projectile projectile, @Nullable AbstractArrow arrow, NamespacedNBT namespacedNBT, boolean b) {
+    }
+
+    @Override
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
+        float level = modifier.getEffectiveLevel();
+        if(!(attacker instanceof ServerPlayer player)){
+            return false;
+        }
+        float damage =
+        target.hurt(DamageSource.playerAttack(player), )
+    }
 
     // 添加TOOLTIP
     public ToolType[] TYPES = new ToolType[]{ToolType.MELEE, ToolType.RANGED};

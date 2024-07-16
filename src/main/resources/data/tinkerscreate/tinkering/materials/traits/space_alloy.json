@@ -1,16 +1,18 @@
 {
   "default": [
     {
-      "name": "tinkerscreate:rose_power"
-    },
-    {
-      "name": "tinkerscreate:shadow"
+      "name": "tinkerscreate:blood_repair"
     }
   ],
   "perStat": {
     "tconstruct:armor": [
       {
         "name": "tinkerscreate:phoenix"
+      }
+    ],
+    "tconstruct:melee_harvest": [
+      {
+        "name": "tinkerscreate:cold_blood"
       }
     ]
   }
