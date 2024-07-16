@@ -40,13 +40,12 @@ public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageMo
     public float getMeleeDamage(IToolStackView tool, ModifierEntry modifier, ToolAttackContext Context, float baseDamage, float damage) {
         // 获取modifier等级
         float level = modifier.getEffectiveLevel();
-        // 获取被攻击生物max_health
-        float max_health = Context.getLivingTarget().getMaxHealth();
-        // 判断是否为ServerPlayer
-        if (!(Context.getPlayerAttacker() instanceof ServerPlayer attacker))
+        // 获取被攻击生物
+        var target = Context.getLivingTarget();
+        if (target == null)
             return damage;
         // 判断满血与否
-        if (max_health == Context.getLivingTarget().getHealth()) {
+        if (target.getHealth() == target.getMaxHealth()) {
             return damage + baseDamage * 0.5F;// 50%面板伤害加成
         }
         return damage;

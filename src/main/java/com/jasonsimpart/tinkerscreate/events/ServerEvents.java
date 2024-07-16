@@ -2,10 +2,11 @@ package com.jasonsimpart.tinkerscreate.events;
 
 import com.jasonsimpart.tinkerscreate.TinkersCreate;
 import com.jasonsimpart.tinkerscreate.hooks.TinkersCreateModifierHooks;
-import net.minecraft.commands.Commands;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
@@ -14,7 +15,7 @@ import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
 @Mod.EventBusSubscriber(modid = TinkersCreate.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ServerEvents {
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onLivingDeath(LivingDeathEvent event) {
         if (event.getSource() == DamageSource.OUT_OF_WORLD)
             return;
@@ -34,6 +35,19 @@ public class ServerEvents {
         if (cancelled) {
             event.setCanceled(true);
             entity.setHealth(1.0F);
+        }
+
+        var attackerEntity = event.getSource().getEntity();
+        if (!event.isCanceled() && attackerEntity instanceof LivingEntity attacker) {
+            EquipmentContext attackerContext = new EquipmentContext(attacker);
+            for (var slotType : EquipmentSlot.values()) {
+                IToolStackView tool = attackerContext.getToolInSlot(slotType);
+                if (tool != null && !tool.isBroken()) {
+                    for (var entry : tool.getModifierList()) {
+                        entry.getHook(TinkersCreateModifierHooks.TARGET_DEATH).onTargetDeath(tool, entry, entity);
+                    }
+                }
+            }
         }
     }
 }

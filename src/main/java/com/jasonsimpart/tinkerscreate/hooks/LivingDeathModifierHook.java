@@ -12,7 +12,6 @@ public interface LivingDeathModifierHook {
         public Collection<LivingDeathModifierHook> modules() {
             return this.modules;
         }
-
         @Override
         public boolean onLivingDeath(IToolStackView tool, ModifierEntry modifier, LivingEntity entity, boolean cancelled) {
             for (var module : this.modules)
