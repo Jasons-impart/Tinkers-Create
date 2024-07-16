@@ -17,4 +17,5 @@ public class TinkersCreateModifiers {
     public static StaticModifier<BloodRepairModifier> bloodrepair = MODIFIERS.register("blood_repair", BloodRepairModifier::new);
     public static StaticModifier<RosePowerModifier> rosepower = MODIFIERS.register("rose_power", RosePowerModifier::new);
     public static StaticModifier<CuttingSteelModifier> cuttingsteel = MODIFIERS.register("cutting_steel", CuttingSteelModifier::new);
+    public static StaticModifier<ShadowModifier> shadow = MODIFIERS.register("shadow", ShadowModifier::new);
 }
