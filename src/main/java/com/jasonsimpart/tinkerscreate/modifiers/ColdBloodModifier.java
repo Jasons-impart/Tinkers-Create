@@ -57,7 +57,7 @@ public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageMo
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> tooltip, TooltipKey key, TooltipFlag tooltipFlag) {
         ToolType type = ToolType.from(tool.getItem(), TYPES);
         if (type != null && player != null) {
-            double bonus = 0.5 * Utils.getBaseDamage(player, tool);// 未实现传参！！！
+            double bonus = 0.5 * Utils.getBaseDamage(player, tool);
             // 判断是否存在bonus，若存在则显示
             if (bonus > 0.0) {
                 // 添加到hook里

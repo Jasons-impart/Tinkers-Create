@@ -26,8 +26,8 @@ public class FragileModifier extends Modifier implements ToolStatsModifierHook {
     }
 
     @Override
-    public void addToolStats(IToolContext iToolContext, ModifierEntry modifierEntry, ModifierStatsBuilder modifierStatsBuilder) {
-        float level = modifierEntry.getEffectiveLevel();
-        ToolStats.DURABILITY.multiply(modifierStatsBuilder, 1 - 0.2 * level);
+    public void addToolStats(IToolContext toolContext, ModifierEntry modifier, ModifierStatsBuilder builder) {
+        float level = modifier.getEffectiveLevel();
+        ToolStats.DURABILITY.multiply(builder, 1 - 0.2 * level);
     }
 }

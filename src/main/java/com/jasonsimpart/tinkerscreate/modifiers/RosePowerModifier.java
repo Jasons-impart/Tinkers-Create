@@ -9,10 +9,8 @@ import slimeknights.tconstruct.library.tools.nbt.IToolContext;
 import slimeknights.tconstruct.library.tools.stat.ModifierStatsBuilder;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 
-import javax.annotation.ParametersAreNonnullByDefault;
+public class RosePowerModifier extends Modifier implements ToolStatsModifierHook{
 
-@ParametersAreNonnullByDefault
-public class SolidModifier extends Modifier implements ToolStatsModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
@@ -21,12 +19,16 @@ public class SolidModifier extends Modifier implements ToolStatsModifierHook {
 
     @Override
     public int getPriority() {
-        return 50;
+        return 53;
     }
 
+    
+
     @Override
-    public void addToolStats(IToolContext toolContext, ModifierEntry modifier, ModifierStatsBuilder builder) {
+    public void addToolStats(IToolContext tool, ModifierEntry modifier, ModifierStatsBuilder builder) {
         float level = modifier.getEffectiveLevel();
-        ToolStats.DURABILITY.multiply(builder, 1 + 0.15 * level);
+        ToolStats.MINING_SPEED.multiply(builder, 1 + 0.5 * level);
+        ToolStats.ATTACK_SPEED.multiply(builder, 1 + 0.5 * level);
+        ToolStats.VELOCITY.multiply(builder, 1 + 0.5 * level);
     }
 }
