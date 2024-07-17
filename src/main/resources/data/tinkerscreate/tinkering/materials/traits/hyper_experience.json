@@ -15,7 +15,14 @@
         "level": 1
       },
       {
+        "name": "tinkerscreate:mending"
+      },
+      {
         "name": "tconstruct:shiny"
+      },
+      {
+        "name": "tinkerscreate:fragile",
+        "level": 1
       }
     ],
     "tconstruct:ranged": [
@@ -24,7 +31,14 @@
         "level": 1
       },
       {
+        "name": "tinkerscreate:mending"
+      },
+      {
         "name": "tconstruct:shiny"
+      },
+      {
+        "name": "tinkerscreate:fragile",
+        "level": 1
       }
     ]
   }

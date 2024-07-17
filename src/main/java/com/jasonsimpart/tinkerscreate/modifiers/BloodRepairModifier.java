@@ -36,15 +36,15 @@ public class BloodRepairModifier extends Modifier implements TargetDeathModifier
         // 随机数实现概率(精度为5%)
         int randomInt = (int) Math.floor(Math.random() * 20);
         // 防止判空
-//        if (targetEntity == null){}
-        // 杀死生物恢复期望为0.15*(1+6*3)(满级状态下)
+        if (targetEntity == null){}
+        // 杀死生物恢复期望为0.15 * (1 + 6 * level)
         if (randomInt <= 3) {
             ToolDamageUtil.repair(tool, 1 + (int) (6 * level));
         }
     }
 
     // 添加TOOLTIP
-    public ToolType[] TYPES = new ToolType[]{ToolType.MELEE};
+    public ToolType[] TYPES = new ToolType[]{ToolType.MELEE, ToolType.RANGED};
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> tooltip, TooltipKey key, TooltipFlag tooltipFlag) {
         ToolType type = ToolType.from(tool.getItem(), TYPES);

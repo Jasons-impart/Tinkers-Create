@@ -34,15 +34,14 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import javax.tools.Tool;
 import java.util.List;
 
-import static slimeknights.tconstruct.tools.modifiers.traits.melee.InsatiableModifier.applyEffect;
 
 @ParametersAreNonnullByDefault
-public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageModifierHook, TooltipModifierHook {
+public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageModifierHook, TooltipModifierHook, ProjectileHitModifierHook {
 
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
-        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP, ModifierHooks.PROJECTILE_HIT);
     }
 
     @Override
@@ -61,9 +60,21 @@ public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageMo
             return damage;
         // 判断满血与否
         if (target.getHealth() == target.getMaxHealth()) {
-            return damage + baseDamage * 0.5F;// 50%面板伤害加成
+            // 50%面板伤害加成
+            return damage + baseDamage * 0.5F;
         }
         return damage;
+    }
+
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+        // 获取Modifier等级
+        float level = modifier.getEffectiveLevel();
+        // 判断是否为ServerPlayer以及target是否存在、projectile是否为arrow、判断满血与否
+        if (target != null && projectile instanceof AbstractArrow arrow && attacker instanceof ServerPlayer player && target.getHealth() == target.getMaxHealth()) {
+            // 50%面板伤害加成
+            arrow.setBaseDamage(arrow.getBaseDamage() * 1.5);
+        }
+        return false;
     }
 
     // 添加TOOLTIP
@@ -73,9 +84,11 @@ public class ColdBloodModifier extends NoLevelsModifier implements MeleeDamageMo
         ToolType type = ToolType.from(tool.getItem(), TYPES);
         if (type != null && player != null) {
             double bonus = 0.5 * Utils.getBaseDamage(player, tool);
+            double ranged_multiply = 0.5;
             // 判断是否存在bonus，若存在则显示
             if (bonus > 0.0) {
                 // 添加到hook里
+                TooltipModifierHook.addPercentBoost(this, TooltipModifierHook.statName(this, ToolStats.PROJECTILE_DAMAGE), ranged_multiply, tooltip);
                 TooltipModifierHook.addFlatBoost(this, TooltipModifierHook.statName(this, ToolStats.ATTACK_DAMAGE), bonus, tooltip);
             }
         }

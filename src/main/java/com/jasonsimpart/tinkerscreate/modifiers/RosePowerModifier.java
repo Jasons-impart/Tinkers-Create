@@ -35,6 +35,6 @@ public class RosePowerModifier extends Modifier implements ToolStatsModifierHook
         float level = modifier.getEffectiveLevel();
         ToolStats.MINING_SPEED.multiply(builder, 1 + 0.5 * level);
         ToolStats.ATTACK_SPEED.multiply(builder, 1 + 0.5 * level);
-        ToolStats.VELOCITY.multiply(builder, 1 + 0.5 * level);
+        ToolStats.VELOCITY.multiply(builder, 1 + 0.3 * level);
     }
 }

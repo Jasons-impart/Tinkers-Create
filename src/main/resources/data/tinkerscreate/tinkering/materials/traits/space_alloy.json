@@ -1,18 +1,32 @@
 {
   "default": [
     {
-      "name": "tinkerscreate:blood_repair"
+      "name": "tconstruct:shiny"
     }
   ],
   "perStat": {
     "tconstruct:armor": [
       {
         "name": "tinkerscreate:phoenix"
+      },
+      {
+        "name": "tconstruct:shiny"
       }
     ],
     "tconstruct:melee_harvest": [
       {
         "name": "tinkerscreate:cold_blood"
+      },
+      {
+        "name": "tconstruct:shiny"
+      }
+    ],
+    "tconstruct:ranged": [
+      {
+        "name": "tinkerscreate:cold_blood"
+      },
+      {
+        "name": "tconstruct:shiny"
       }
     ]
   }

@@ -5,14 +5,24 @@
     "solid":                "#7A8B8B",
     "experience_killer":    "#76EEC6",
     "cold_blood":           "#FF0000",
-    "phoenix":              "#FFD700"
+    "phoenix":              "#FFD700",
+    "mending":              "#00FF7F",
+    "blood_repair":         "#C1CDC1",
+    "rose_power":           "#FF55FF",
+    "shadow":               "#2F4F4F",
+    "cutting_steel":        "#555555"
 
   },
 
   "material.tinkerscreate": {
 
     "space_alloy":          "#8470FF",
-    "hyper_experience":     "#76EEC6"
+    "hyper_experience":     "#76EEC6",
+    "zinc":                 "#C1CDC1",
+    "rose_quartz":          "#FF0000",
+    "andesite_alloy":       "#7A8B8B",
+    "refined_radiance":     "#FFFAFA",
+    "shadow_steel":         "#2F4F4F"
 
   },
 

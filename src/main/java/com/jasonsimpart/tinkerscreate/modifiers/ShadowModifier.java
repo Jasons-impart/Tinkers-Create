@@ -1,9 +1,13 @@
 package com.jasonsimpart.tinkerscreate.modifiers;
 
-import com.jasonsimpart.tinkerscreate.Utils;
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.phys.EntityHitResult;
 import org.jetbrains.annotations.Nullable;
 import slimeknights.mantle.client.TooltipKey;
 import slimeknights.tconstruct.library.modifiers.Modifier;
@@ -11,9 +15,12 @@ import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.modifiers.ModifierHooks;
 import slimeknights.tconstruct.library.modifiers.hook.combat.MeleeDamageModifierHook;
 import slimeknights.tconstruct.library.modifiers.hook.display.TooltipModifierHook;
+import slimeknights.tconstruct.library.modifiers.hook.ranged.ProjectileHitModifierHook;
 import slimeknights.tconstruct.library.module.ModuleHookMap;
 import slimeknights.tconstruct.library.tools.context.ToolAttackContext;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ModifierNBT;
+import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.stats.ToolType;
 
@@ -21,11 +28,17 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
 @ParametersAreNonnullByDefault
-public class ShadowModifier extends Modifier implements MeleeDamageModifierHook, TooltipModifierHook {
+public class ShadowModifier extends Modifier implements MeleeDamageModifierHook, TooltipModifierHook, ProjectileHitModifierHook {
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
-        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP, ModifierHooks.PROJECTILE_HIT);
+    }
+
+    @Override
+    // 设定priority以确定作用顺序
+    public int getPriority() {
+        return 200;
     }
 
     @Override
@@ -37,21 +50,38 @@ public class ShadowModifier extends Modifier implements MeleeDamageModifierHook,
         if (!attackerLevel.isRainingAt(pos) &&
             attackerLevel.getMaxLocalRawBrightness(pos) > 7)
             return damage;
-        return damage + 5 * level;
+        return damage * (float) (1 + 0.3 * level);
     }
 
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+        // 获取Modifier等级
+        float level = modifier.getEffectiveLevel();
+        var attackerLevel = attacker.level;
+        var pos = attacker.blockPosition();
+        if (!attackerLevel.isRainingAt(pos) &&
+                attackerLevel.getMaxLocalRawBrightness(pos) > 7)
+            return false;
+        // 判断是否为ServerPlayer以及target是否存在、projectile是否为arrow
+        if (target != null && projectile instanceof AbstractArrow arrow && attacker instanceof ServerPlayer player) {
+            // 0.3 * level面板伤害加成
+            arrow.setBaseDamage(arrow.getBaseDamage() * (float) (1 + 0.3 * level));
+        }
+        return false;
+    }
+
+
     // 添加TOOLTIP
-    public ToolType[] TYPES = new ToolType[]{ToolType.MELEE};
+    public ToolType[] TYPES = new ToolType[]{ToolType.MELEE, ToolType.RANGED};
     @Override
     public void addTooltip(IToolStackView tool, ModifierEntry modifier, @Nullable Player player, List<Component> tooltip, TooltipKey key, TooltipFlag tooltipFlag) {
         ToolType type = ToolType.from(tool.getItem(), TYPES);
         float level = modifier.getEffectiveLevel();
         if (type != null && player != null) {
-            double bonus = 5 * level;
+            double multiply = 0.3 * level;
             // 判断是否存在bonus，若存在则显示
-            if (bonus > 0.0) {
+            if (multiply > 0.0) {
                 // 添加到hook里
-                TooltipModifierHook.addFlatBoost(this, TooltipModifierHook.statName(this, ToolStats.ATTACK_DAMAGE), bonus, tooltip);
+                TooltipModifierHook.addPercentBoost(this, TooltipModifierHook.statName(this, ToolStats.ATTACK_DAMAGE), multiply, tooltip);
             }
         }
     }

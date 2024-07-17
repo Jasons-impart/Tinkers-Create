@@ -17,7 +17,9 @@
   "tconstruct:ranged": [
     {
       "name": "tinkerscreate:solid"
+    },
+    {
+      "name": "tinkerscreate:shadow"
     }
   ]
-}
 }

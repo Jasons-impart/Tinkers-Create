@@ -1,6 +1,7 @@
 {
   "color": "FF94D94A",
   "fallbacks": [
+    "slime_metal",
     "metal"
   ],
   "generator": {
@@ -12,7 +13,6 @@
       "tconstruct:repair_kit",
       "tconstruct:limb",
       "tconstruct:grip",
-      "tconstruct:bowstring",
       "tconstruct:armor_plating",
       "tconstruct:plating_boots",
       "tconstruct:plating_leggings",

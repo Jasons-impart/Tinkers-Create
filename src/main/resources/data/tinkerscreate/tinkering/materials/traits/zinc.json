@@ -2,12 +2,22 @@
   "perStat": {
     "tconstruct:melee_harvest": [
       {
-        "name": "tconstruct:fragile"
+        "name": "tinkerscreate:fragile",
+        "level": 1
+      },
+      {
+        "name": "tinkerscreate:blood_repair",
+        "level": 1
       }
     ],
     "tconstruct:ranged": [
       {
-        "name": "tconstruct:fragile"
+        "name": "tinkerscreate:fragile",
+        "level": 1
+      },
+      {
+        "name": "tinkerscreate:blood_repair",
+        "level": 1
       }
     ]
   }

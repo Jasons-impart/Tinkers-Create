@@ -1,7 +1,6 @@
 {
   "stats": {
     "tconstruct:binding": {},
-    "tconstruct:bowstring": {},
     "tconstruct:handle": {
       "durability": 0.1,
       "mining_speed": 0.2,
