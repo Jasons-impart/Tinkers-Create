@@ -1,0 +1,23 @@
+{
+  "perStat": {
+    "tconstruct:armor": [
+      {
+        "name": "tinkerscreate:solid"
+      }
+    ],
+    "tconstruct:melee_harvest": [
+      {
+        "name": "tinkerscreate:solid"
+      },
+      {
+        "name": "tinkerscreate:shadow"
+      }
+    ]
+  },
+  "tconstruct:ranged": [
+    {
+      "name": "tinkerscreate:solid"
+    }
+  ]
+}
+}
