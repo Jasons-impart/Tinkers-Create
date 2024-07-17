@@ -29,13 +29,13 @@ import slimeknights.tconstruct.tools.stats.ToolType;
 import java.util.List;
 
 
-public class ExperienceKillerModifier extends Modifier implements MeleeDamageModifierHook, TooltipModifierHook, ProjectileLaunchModifierHook, ProjectileHitModifierHook {
+public class ExperienceKillerModifier extends Modifier implements MeleeDamageModifierHook, TooltipModifierHook {
 
     // 注册HOOK
     @Override
     protected void registerHooks(ModuleHookMap.Builder hookBuilder) {
         super.registerHooks(hookBuilder);
-        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP, ModifierHooks.PROJECTILE_LAUNCH, ModifierHooks.PROJECTILE_HIT);
+        hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP);
     }
     @Override
     // 设定priority以确定作用顺序
@@ -51,21 +51,6 @@ public class ExperienceKillerModifier extends Modifier implements MeleeDamageMod
         if (!(Context.getPlayerAttacker() instanceof ServerPlayer attacker))
             return damage;
         return damage + Math.min((level + attacker.experienceLevel * 0.3F), (100 + 20 * level));// level + 0.3倍经验加成,设定最大值为20*level+100
-    }
-
-
-    @Override
-    public void onProjectileLaunch(IToolStackView tool, ModifierEntry modifier, LivingEntity shooter, Projectile projectile, @Nullable AbstractArrow arrow, NamespacedNBT namespacedNBT, boolean b) {
-    }
-
-    @Override
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
-        float level = modifier.getEffectiveLevel();
-        if(!(attacker instanceof ServerPlayer player)){
-            return false;
-        }
-        float damage =
-        target.hurt(DamageSource.playerAttack(player), )
     }
 
     // 添加TOOLTIP
