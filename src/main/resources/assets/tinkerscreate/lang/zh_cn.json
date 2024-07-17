@@ -25,6 +25,26 @@
   "material.tinkerscreate.hyper_experience.encyclopedia": "玩家等级每增加一级伤害增加0.3，上限为 强化等级*20+100",
   "material.tinkerscreate.hyper_experience.ranged": "",
 
+  "material.tinkerscreate.zinc": "锌",
+  "material.tinkerscreate.zinc.flavor": "一种坚固的材料！",
+  "material.tinkerscreate.zinc.encyclopedia": "",
+  "material.tinkerscreate.zinc.ranged": "",
+
+  "material.tinkerscreate.andesite_alloy": "安山合金",
+  "material.tinkerscreate.andesite_alloy.flavor": "不止可以用于制造机械",
+  "material.tinkerscreate.andesite_alloy.encyclopedia": "",
+  "material.tinkerscreate.andesite_alloy.ranged": "",
+
+  "material.tinkerscreate.refined_radiance": "光辉石",
+  "material.tinkerscreate.refined_radiance.flavor": "",
+  "material.tinkerscreate.refined_radiance.encyclopedia": "",
+  "material.tinkerscreate.refined_radiance.ranged": "",
+
+  "material.tinkerscreate.shadow_steel": "暗影钢",
+  "material.tinkerscreate.shadow_steel.flavor": "",
+  "material.tinkerscreate.shadow_steel.encyclopedia": "",
+  "material.tinkerscreate.shadow_steel.ranged": "",
+
   "_comment": "modifier",
 
   "modifier.tinkerscreate.fragile": "易碎",

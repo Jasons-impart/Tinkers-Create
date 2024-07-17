@@ -1,0 +1,14 @@
+{
+  "perStat": {
+    "tconstruct:melee_harvest": [
+      {
+        "name": "tconstruct:fragile"
+      }
+    ],
+    "tconstruct:ranged": [
+      {
+        "name": "tconstruct:fragile"
+      }
+    ]
+  }
+}
