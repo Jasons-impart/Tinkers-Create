@@ -5,7 +5,12 @@
     "modules": [
         {
             "type": "tconstruct:constant_enchantment",
-            "name": "minecraft:mending"
+            "level": 1,
+            "name": "minecraft:mending",
+            "tool": {
+                "type": "mantle:tag",
+                "tag": "tconstruct:modifiable"
+            }
         }
     ]
 }

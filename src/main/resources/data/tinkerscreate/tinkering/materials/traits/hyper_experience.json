@@ -1,14 +1,14 @@
 {
-  "default": [
-    {
-      "name": "tinkerscreate:fragile",
-      "level": 1
-    },
-    {
-      "name": "tconstruct:shiny"
-    }
-  ],
   "perStat": {
+    "tconstruct:armor": [
+      {
+        "name": "tinkerscreate:mending"
+      },
+      {
+        "name": "tinkerscreate:fragile",
+        "level": 1
+      }
+    ],
     "tconstruct:melee_harvest": [
       {
         "name": "tinkerscreate:experience_killer",

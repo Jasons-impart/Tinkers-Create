@@ -2,8 +2,6 @@ package com.jasonsimpart.tinkerscreate.modifiers;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
@@ -33,7 +31,7 @@ import java.util.List;
 public class CuttingSteelModifier extends Modifier implements MeleeHitModifierHook, TooltipModifierHook, ProjectileHitModifierHook {
 
     public static void applyEffect(LivingEntity living, int duration, int level) {
-        TinkerEffect effect = (TinkerEffect)TinkerModifiers.pierceEffect.get();
+        TinkerEffect effect = TinkerModifiers.pierceEffect.get();
         effect.apply(living, duration, level, true);
     }
 
