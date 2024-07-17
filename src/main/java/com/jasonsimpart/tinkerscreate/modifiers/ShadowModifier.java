@@ -36,7 +36,6 @@ public class ShadowModifier extends Modifier implements MeleeDamageModifierHook,
     }
 
     @Override
-    // 设定priority以确定作用顺序
     public int getPriority() {
         return 200;
     }
@@ -53,9 +52,11 @@ public class ShadowModifier extends Modifier implements MeleeDamageModifierHook,
         return damage * (float) (1 + 0.3 * level);
     }
 
-    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @javax.annotation.Nullable LivingEntity attacker, @javax.annotation.Nullable LivingEntity target) {
+    public boolean onProjectileHitEntity(ModifierNBT modifiers, NamespacedNBT persistentData, ModifierEntry modifier, Projectile projectile, EntityHitResult hit, @Nullable LivingEntity attacker, @Nullable LivingEntity target) {
         // 获取Modifier等级
         float level = modifier.getEffectiveLevel();
+        if (attacker == null)
+            return false;
         var attackerLevel = attacker.level;
         var pos = attacker.blockPosition();
         if (!attackerLevel.isRainingAt(pos) &&
@@ -85,6 +86,4 @@ public class ShadowModifier extends Modifier implements MeleeDamageModifierHook,
             }
         }
     }
-
-
 }

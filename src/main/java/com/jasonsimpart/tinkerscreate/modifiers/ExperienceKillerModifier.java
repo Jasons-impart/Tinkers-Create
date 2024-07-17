@@ -24,9 +24,10 @@ import slimeknights.tconstruct.library.tools.nbt.NamespacedNBT;
 import slimeknights.tconstruct.library.tools.stat.ToolStats;
 import slimeknights.tconstruct.tools.stats.ToolType;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.List;
 
-
+@ParametersAreNonnullByDefault
 public class ExperienceKillerModifier extends Modifier implements MeleeDamageModifierHook, TooltipModifierHook, ProjectileHitModifierHook {
 
     // 注册HOOK
@@ -36,7 +37,6 @@ public class ExperienceKillerModifier extends Modifier implements MeleeDamageMod
         hookBuilder.addHook(this, ModifierHooks.MELEE_DAMAGE, ModifierHooks.TOOLTIP, ModifierHooks.PROJECTILE_HIT);
     }
     @Override
-    // 设定priority以确定作用顺序
     public int getPriority() {
         return 50;
     }
