@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "tinkerscreate:item/hyper_experience_ingot"
+    "layer0": "tinkerscreate:item/materials/hyper_experience/hyper_experience_ingot"
   }
 }

@@ -1,7 +1,11 @@
 package com.jasonsimpart.tinkerscreate.register;
 
 import com.jasonsimpart.tinkerscreate.TinkersCreate;
-import com.jasonsimpart.tinkerscreate.modifiers.*;
+import com.jasonsimpart.tinkerscreate.modifiers.Armor.PhoenixModifier;
+import com.jasonsimpart.tinkerscreate.modifiers.Attack.*;
+import com.jasonsimpart.tinkerscreate.modifiers.Common.BloodRepairModifier;
+import com.jasonsimpart.tinkerscreate.modifiers.Common.FragileModifier;
+import com.jasonsimpart.tinkerscreate.modifiers.Common.SolidModifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 

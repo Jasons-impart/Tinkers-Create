@@ -1,4 +1,4 @@
-package com.jasonsimpart.tinkerscreate.modifiers;
+package com.jasonsimpart.tinkerscreate.modifiers.Attack;
 
 import com.jasonsimpart.tinkerscreate.Utils;
 import net.minecraft.network.chat.Component;

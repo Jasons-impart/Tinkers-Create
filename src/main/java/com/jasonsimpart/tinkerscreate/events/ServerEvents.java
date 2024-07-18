@@ -2,16 +2,23 @@ package com.jasonsimpart.tinkerscreate.events;
 
 import com.jasonsimpart.tinkerscreate.TinkersCreate;
 import com.jasonsimpart.tinkerscreate.hooks.TinkersCreateModifierHooks;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.ShieldBlockEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import slimeknights.tconstruct.library.modifiers.ModifierEntry;
 import slimeknights.tconstruct.library.tools.context.EquipmentContext;
 import slimeknights.tconstruct.library.tools.helper.ModifierUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
+import slimeknights.tconstruct.library.tools.nbt.ToolStack;
+
+import java.util.Iterator;
 
 @Mod.EventBusSubscriber(modid = TinkersCreate.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ServerEvents {
@@ -47,6 +54,23 @@ public class ServerEvents {
                         entry.getHook(TinkersCreateModifierHooks.TARGET_DEATH).onTargetDeath(tool, entry, entity);
                     }
                 }
+            }
+        }
+    }
+
+    @SubscribeEvent
+    public static void onShieldBlocking(ShieldBlockEvent event) {
+        LivingEntity entity = event.getEntity();
+        if (entity instanceof Player player) {
+            if (player.getUseItem().isEmpty()){
+                return;
+            }
+            ToolStack tool = ToolStack.from(player.getUseItem());
+            Iterator iterator = tool.getModifierList().iterator();
+
+            while (iterator.hasNext()) {
+                ModifierEntry entry = (ModifierEntry)iterator.next();
+                entry.getHook(TinkersCreateModifierHooks.SHIELD_BLOCK).onShieldBlocking(tool, event, player, event.getDamageSource(), entry.getLevel());
             }
         }
     }

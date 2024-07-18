@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "tinkerscreate:item/space_alloy_nugget"
+    "layer0": "tinkerscreate:item/materials/space_alloy/space_alloy_nugget"
   }
 }

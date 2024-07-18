@@ -1,4 +1,4 @@
-package com.jasonsimpart.tinkerscreate.modifiers;
+package com.jasonsimpart.tinkerscreate.modifiers.Common;
 
 import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.ModifierEntry;

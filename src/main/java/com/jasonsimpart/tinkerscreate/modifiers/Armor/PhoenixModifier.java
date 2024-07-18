@@ -1,4 +1,4 @@
-package com.jasonsimpart.tinkerscreate.modifiers;
+package com.jasonsimpart.tinkerscreate.modifiers.Armor;
 
 import com.jasonsimpart.tinkerscreate.hooks.LivingDeathModifierHook;
 import com.jasonsimpart.tinkerscreate.hooks.TinkersCreateModifierHooks;

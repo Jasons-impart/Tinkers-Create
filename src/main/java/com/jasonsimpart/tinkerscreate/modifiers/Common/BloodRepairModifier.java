@@ -1,4 +1,4 @@
-package com.jasonsimpart.tinkerscreate.modifiers;
+package com.jasonsimpart.tinkerscreate.modifiers.Common;
 
 import com.jasonsimpart.tinkerscreate.hooks.TargetDeathModifierHook;
 import com.jasonsimpart.tinkerscreate.hooks.TinkersCreateModifierHooks;
