@@ -1,0 +1,13 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "sign_plate":         "tinkerscreate:item/tool/battle_sign/broken_sign_plate",
+    "handle":      "tinkerscreate:item/tool/battle_sign/handle"
+  },
+  "modifier_roots": [ "tinkerscreate:item/tool/battle_sign/modifiers/" ],
+  "parts": [
+    { "name": "handle", "index": 1 },
+    { "name": "sign_plate", "index": 0 }
+  ]
+}

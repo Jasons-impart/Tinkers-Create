@@ -1,0 +1,21 @@
+{
+  "loader": "tconstruct:tool",
+  "parent": "forge:item/default-tool",
+  "textures": {
+    "sign_plate":         "tinkerscreate:item/tool/battle_sign/sign_plate",
+    "handle":      "tinkerscreate:item/tool/battle_sign/handle"
+  },
+  "modifier_roots": [ "tinkerscreate:item/tool/battle_sign/modifiers/" ],
+  "parts": [
+    { "name": "handle", "index": 1 },
+    { "name": "sign_plate", "index": 0 }
+  ],
+  "overrides": [{
+    "predicate": { "tconstruct:charging": 2 },
+    "model": "tinkerscreate:item/blocking/battle_sign"
+  },
+  {
+    "predicate": { "tconstruct:broken": 1  },
+    "model": "tinkerscreate:item/broken/battle_sign"
+  }]
+}
