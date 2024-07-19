@@ -1,9 +1,21 @@
 {
   "replace": false,
   "parts": [
-    { "path": "tinkerscreate:item/tool/parts/sign_plate",        "stat_type": "tconstruct:head" },
-    { "path": "tinkerscreate:item/tool/battle_sign/sign_plate",        "stat_type": "tconstruct:head" },
-    { "path": "tinkerscreate:item/tool/battle_sign/broken_sign_plate", "stat_type": "tconstruct:head" },
-    { "path": "tinkerscreate:item/tool/battle_sign/tool_handle",      "stat_type": "tconstruct:handle" }
+    {
+      "path": "tinkerscreate:item/tool/parts/sign_plate",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "tinkerscreate:item/tool/battle_sign/sign_plate",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "tinkerscreate:item/tool/battle_sign/broken_sign_plate",
+      "stat_type": "tconstruct:head"
+    },
+    {
+      "path": "tinkerscreate:item/tool/battle_sign/handle",
+      "stat_type": "tconstruct:handle"
+    }
   ]
 }
