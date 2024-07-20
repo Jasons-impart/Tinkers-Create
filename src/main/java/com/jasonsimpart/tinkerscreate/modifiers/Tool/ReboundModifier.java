@@ -11,7 +11,7 @@ import slimeknights.tconstruct.library.tools.helper.ToolAttackUtil;
 import slimeknights.tconstruct.library.tools.helper.ToolDamageUtil;
 import slimeknights.tconstruct.library.tools.nbt.IToolStackView;
 
-public class rebound extends Modifier implements ShieldBlockModifierHook {
+public class ReboundModifier extends Modifier implements ShieldBlockModifierHook {
 
     @Override
     public void onShieldBlocking(IToolStackView tool, ShieldBlockEvent event, Player player, DamageSource source, int level) {

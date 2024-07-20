@@ -1,11 +1,14 @@
 package com.jasonsimpart.tinkerscreate.register;
 
 import com.jasonsimpart.tinkerscreate.TinkersCreate;
+import com.jasonsimpart.tinkerscreate.modifiers.Armor.HeavinessModifier;
 import com.jasonsimpart.tinkerscreate.modifiers.Armor.PhoenixModifier;
 import com.jasonsimpart.tinkerscreate.modifiers.Attack.*;
 import com.jasonsimpart.tinkerscreate.modifiers.Common.BloodRepairModifier;
 import com.jasonsimpart.tinkerscreate.modifiers.Common.FragileModifier;
 import com.jasonsimpart.tinkerscreate.modifiers.Common.SolidModifier;
+import com.jasonsimpart.tinkerscreate.modifiers.Tool.ReboundModifier;
+import slimeknights.tconstruct.library.modifiers.Modifier;
 import slimeknights.tconstruct.library.modifiers.util.ModifierDeferredRegister;
 import slimeknights.tconstruct.library.modifiers.util.StaticModifier;
 
@@ -22,4 +25,6 @@ public class TinkersCreateModifiers {
     public static StaticModifier<RosePowerModifier> rosepower = MODIFIERS.register("rose_power", RosePowerModifier::new);
     public static StaticModifier<CuttingSteelModifier> cuttingsteel = MODIFIERS.register("cutting_steel", CuttingSteelModifier::new);
     public static StaticModifier<ShadowModifier> shadow = MODIFIERS.register("shadow", ShadowModifier::new);
+    public static StaticModifier<ReboundModifier> rebound = MODIFIERS.register("rebound", ReboundModifier::new);
+    public static StaticModifier<HeavinessModifier> heaviness = MODIFIERS.register("heaviness", HeavinessModifier::new);
 }

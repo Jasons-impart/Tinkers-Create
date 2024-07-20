@@ -1,0 +1,14 @@
+{
+  "perStat": {
+    "tconstruct:armor": [
+      {
+        "name": "tinkerscreate:protection",
+        "level": 1
+      },
+      {
+        "name": "tinkerscreate:heaviness",
+        "level": 1
+      }
+    ]
+  }
+}
