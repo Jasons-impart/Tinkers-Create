@@ -13,13 +13,11 @@ import slimeknights.tconstruct.tools.stats.HeadMaterialStats;
 
 public class TinkersCreateItems {
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TinkersCreate.MODID);
-    public static Item register_item() { return new Item(ITEM); }
+
     private static final Item.Properties TOOL = new Item.Properties().stacksTo(1).tab(TinkersCreateCreativeTabs.TOOL_GROUP);
     private static final Item.Properties PARTS = new Item.Properties().tab(TinkersCreateCreativeTabs.TOOL_GROUP);
     private static final Item.Properties ITEM = new Item.Properties().tab(TinkersCreateCreativeTabs.ITEM_GROUP);
-    private static BlockItem register_block(Block block) {
-        return new BlockItem(block, new Item.Properties().tab(TinkersCreateCreativeTabs.ITEM_GROUP));
-    }
+
     // Tools
     public static RegistryObject<Item> BATTLE_SIGN = ITEMS.register("battle_sign", () -> new ModifiableItem(TOOL, TinkersCreateTools.BATTLE_SIGN));
 
@@ -40,5 +38,13 @@ public class TinkersCreateItems {
 
     // blocks
     public static RegistryObject<Item> SPACE_ALLOY_BLOCK = ITEMS.register("space_alloy_block", () -> new BlockItem(TinkersCreateBlocks.SPACE_ALLOY_BLOCK.get(), ITEM.fireResistant()));
+
+    public static Item register_item() {
+        return new Item(ITEM);
+    }
+
+    private static BlockItem register_block(Block block) {
+        return new BlockItem(block, new Item.Properties().tab(TinkersCreateCreativeTabs.ITEM_GROUP));
+    }
 
 }

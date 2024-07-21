@@ -137,10 +137,12 @@ dependencies {
     implementation fg.deobf("curse.maven:mantle-74924:5339977")
 
     implementation fg.deobf("curse.maven:jei-238222:5106178")
+    implementation fg.deobf("curse.maven:jade-324717:4914105")
 
     implementation fg.deobf("curse.maven:selene-499980:4983974")
     implementation fg.deobf("curse.maven:mmmmmmmmmmmm-225738:4410143")
 
+    //shit
     implementation fg.deobf("curse.maven:create-328085:4835190")
     implementation fg.deobf("curse.maven:create-enchantment-industry-688768:5342348")
 }
