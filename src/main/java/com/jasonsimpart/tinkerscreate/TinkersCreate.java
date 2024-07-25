@@ -1,10 +1,5 @@
 package com.jasonsimpart.tinkerscreate;
 
-import com.jasonsimpart.tinkerscreate.network.TinkersCreatePacketHandler;
-import com.jasonsimpart.tinkerscreate.register.TinkersCreateBlocks;
-import com.jasonsimpart.tinkerscreate.register.TinkersCreateItems;
-import com.jasonsimpart.tinkerscreate.register.TinkersCreateMaterials;
-import com.jasonsimpart.tinkerscreate.register.TinkersCreateModifiers;
 import com.mojang.logging.LogUtils;
 import net.minecraft.data.DataGenerator;
 import net.minecraftforge.common.MinecraftForge;
@@ -25,11 +20,6 @@ public class TinkersCreate {
     public TinkersCreate() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         MinecraftForge.EVENT_BUS.register(this);
-        TinkersCreateItems.ITEMS.register(bus);
-        TinkersCreateBlocks.BLOCKS.register(bus);
-        TinkersCreateModifiers.MODIFIERS.register(bus);
-
-        TinkersCreatePacketHandler.init();
     }
 
     @SubscribeEvent
